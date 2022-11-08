@@ -1,7 +1,9 @@
 import React from 'react';
+import moment from 'moment';
 
 const UserReview = ({ review }) => {
-   const { userName, userImage, feedback } = review;
+   const { userName, userImage, feedback, date } = review;
+
    return (
       <div>
          <div className="container flex flex-col w-full max-w-4xl p-6 mx-auto divide-y rounded-md divide-gray-300 bg-gray-50 text-gray-800">
@@ -12,7 +14,9 @@ const UserReview = ({ review }) => {
                   </div>
                   <div>
                      <h4 className="font-bold">{userName}</h4>
-                     <span className="text-xs text-gray-600">2 days ago</span>
+                     <span className="text-xs text-gray-600">
+                        {moment.utc(date).local().startOf('seconds').fromNow()}
+                     </span>
                   </div>
                </div>
                <div className="flex items-center space-x-2 text-yellow-500">
