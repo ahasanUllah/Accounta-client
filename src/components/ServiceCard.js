@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const ServiceCard = ({ service }) => {
    const navigate = useNavigate();
 
    const handleDetails = () => {
+      fetch(`http://localhost:5000/services/${service._id}`)
+         .then((res) => res.json())
+         .then((data) => console.log(data));
+
       navigate(`/service/${service._id}`);
    };
    return (
