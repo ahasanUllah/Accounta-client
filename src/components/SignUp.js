@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
+   const { register, updateUser } = useContext(AuthContext);
    const handleSubmit = (event) => {
       event.preventDefault();
       const form = event.target;
@@ -9,8 +12,27 @@ const SignUp = () => {
       const imageUrl = form.imageUrl.value;
       const email = form.email.value;
       const password = form.password.value;
-      console.log(name, imageUrl, email, password);
+      register(email, password)
+         .then((result) => {
+            const user = result.user;
+            console.log(user);
+            updateUser(name, imageUrl);
+            toast.success('Register successfull');
+
+            form.reset();
+         })
+         .catch((error) => {
+            toast.warning(error.message);
+         });
    };
+
+   updateUser()
+      .then(() => {
+         toast.success('profile updated');
+      })
+      .catch((error) => {
+         toast.warning(error.message);
+      });
    return (
       <div className="">
          <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-50 text-gray-800 my-20 container mx-auto">

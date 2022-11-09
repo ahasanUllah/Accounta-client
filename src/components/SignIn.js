@@ -1,6 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
+import { toast } from 'react-toastify';
 
 const SignIn = () => {
+   const { login } = useContext(AuthContext);
+
+   const handleSubmit = (event) => {
+      event.preventDefault();
+      const form = event.target;
+      const email = form.email.value;
+      const password = form.password.value;
+      console.log(email, password);
+      login(email, password)
+         .then((result) => {
+            const user = result.user;
+            console.log(user);
+            toast.success('Sign in successfull');
+         })
+         .catch((error) => {
+            toast.warning(error.message);
+         });
+   };
+
    return (
       <div>
          <div className="">
@@ -8,9 +30,9 @@ const SignIn = () => {
                <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
                <p className="text-sm text-center text-gray-600">
                   Dont have account?
-                  <a href="#" rel="noopener noreferrer" className="focus:underline hover:underline">
+                  <Link to="/signup" rel="noopener noreferrer" className="focus:underline hover:underline">
                      Sign up here
-                  </a>
+                  </Link>
                </p>
                <div className="my-6 space-y-4">
                   <button
@@ -29,7 +51,12 @@ const SignIn = () => {
                   <p className="px-3 text-gray-600">OR</p>
                   <hr className="w-full text-gray-600" />
                </div>
-               <form noValidate="" action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
+               <form
+                  onSubmit={handleSubmit}
+                  noValidate=""
+                  action=""
+                  className="space-y-8 ng-untouched ng-pristine ng-valid"
+               >
                   <div className="space-y-4">
                      <div className="space-y-2">
                         <label htmlFor="email" className="block text-sm">
@@ -49,7 +76,7 @@ const SignIn = () => {
                            <label htmlFor="password" className="text-sm">
                               Password
                            </label>
-                           <a rel="noopener noreferrer" href="#" className="text-xs hover:underline text-gray-600">
+                           <a rel="noopener noreferrer" href="/" className="text-xs hover:underline text-gray-600">
                               Forgot password?
                            </a>
                         </div>
@@ -62,7 +89,7 @@ const SignIn = () => {
                         />
                      </div>
                   </div>
-                  <button type="button" className="w-full px-8 py-3 font-semibold rounded-md bg-teal-600 text-gray-50">
+                  <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md bg-teal-600 text-gray-50">
                      Sign in
                   </button>
                </form>

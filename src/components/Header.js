@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaFileInvoiceDollar } from 'react-icons/fa';
+import { AuthContext } from '../context/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Header = () => {
+   const { logout, user } = useContext(AuthContext);
    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+   const handleSignOut = () => {
+      logout().then(() => {
+         toast.success('Sign Out successfull');
+      });
+   };
+
    const menuItem = (
       <>
          <li>
@@ -43,38 +53,52 @@ const Header = () => {
 
    const rightMenuItem = (
       <>
-         <li>
-            <Link
-               to="/signin"
-               className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-teal-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-               aria-label="Sign In"
-               title="Sign In"
-            >
-               Sign In
-            </Link>
-         </li>
-
-         <li>
-            <Link
-               to="/signup"
-               className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-teal-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-               aria-label="Sign up"
-               title="Sign up"
-            >
-               Sign up
-            </Link>
-         </li>
-
-         <li>
-            <Link
-               to="/addservice"
-               className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-teal-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-               aria-label="Sign up"
-               title="Sign up"
-            >
-               Add Service
-            </Link>
-         </li>
+         {user?.email ? (
+            <>
+               <li>
+                  <Link
+                     to="/addservice"
+                     className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-teal-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                     aria-label="Sign up"
+                     title="Sign up"
+                  >
+                     Add Service
+                  </Link>
+               </li>
+               <li>
+                  <button
+                     onClick={handleSignOut}
+                     type="button"
+                     className="px-3 py-1 inline-flex items-center justify-center h-12  font-medium tracking-wide   "
+                  >
+                     Sign Out
+                  </button>
+               </li>
+            </>
+         ) : (
+            <>
+               <li>
+                  <Link
+                     to="/signin"
+                     className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-teal-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                     aria-label="Sign In"
+                     title="Sign In"
+                  >
+                     Sign In
+                  </Link>
+               </li>
+               <li>
+                  <Link
+                     to="/signup"
+                     className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-teal-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                     aria-label="Sign up"
+                     title="Sign up"
+                  >
+                     Sign up
+                  </Link>
+               </li>
+            </>
+         )}
       </>
    );
    return (
