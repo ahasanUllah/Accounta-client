@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../context/AuthProvider';
 
 const UsreReviewForm = ({ service, reviews, setReviews }) => {
-   console.log(service._id);
+   const { user } = useContext(AuthContext);
    const handleFeedback = (event) => {
       event.preventDefault();
       const feedback = event.target.feedback.value;
 
       const reviewInfo = {
          serviceId: service._id,
-         userName: 'Ahsan',
-         userImage: 'https://source.unsplash.com/100x100/?portrait',
-         userEmail: 'bulbulahasan@gmail.com',
+         serviceName: service.name,
+         userName: user.displayName,
+         userImage: user.photoURL,
+         userEmail: user.email,
          feedback,
          date: new Date(),
       };

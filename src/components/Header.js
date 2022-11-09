@@ -45,7 +45,7 @@ const Header = () => {
                title="Our product"
                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
             >
-               Reviews
+               Blog
             </Link>
          </li>
       </>
@@ -59,10 +59,19 @@ const Header = () => {
                   <Link
                      to="/addservice"
                      className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-teal-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                     aria-label="Sign up"
-                     title="Sign up"
+                     aria-label="add service"
+                     title="add service"
                   >
-                     Add Service
+                     Add service
+                  </Link>
+               </li>
+               <li>
+                  <Link
+                     to="/myreviews"
+                     type="button"
+                     className="px-3 py-1 inline-flex items-center justify-center h-12  font-medium tracking-wide   "
+                  >
+                     My Reviews
                   </Link>
                </li>
                <li>

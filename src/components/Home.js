@@ -40,11 +40,13 @@ const Home = () => {
                <ServiceCard key={service._id} service={service}></ServiceCard>
             ))}
          </div>
-         <Link to="/service" className="text-center ">
-            <button type="button" className="px-8 py-3 font-semibold rounded bg-teal-600 text-gray-100">
-               All services
-            </button>
-         </Link>
+         <div className="text-center">
+            <Link to="/service" className=" ">
+               <button type="button" className="px-8 py-3 font-semibold rounded bg-teal-600 text-gray-100">
+                  All services
+               </button>
+            </Link>
+         </div>
 
          <div>
             <section>
