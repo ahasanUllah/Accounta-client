@@ -28,7 +28,10 @@ const UsreReviewForm = ({ service, reviews, setReviews }) => {
             if (data.acknowledged) {
                fetch(`http://localhost:5000/reviews/${service._id}`)
                   .then((res) => res.json())
-                  .then((data) => setReviews(data));
+                  .then((data) => {
+                     setReviews(data);
+                     console.log(data);
+                  });
             }
             event.target.feedback.value = '';
             console.log(data);
