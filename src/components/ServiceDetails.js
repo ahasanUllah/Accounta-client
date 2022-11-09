@@ -6,15 +6,13 @@ import UsreReviewForm from './UsreReviewForm';
 const ServiceDetails = () => {
    const service = useLoaderData();
    const [reviews, setReviews] = useState([]);
-   const { name, price, image, description, _id } = service;
+   const { name, image, description, _id } = service;
    console.log(service);
 
    useEffect(() => {
       fetch(`http://localhost:5000/reviews/${_id}`)
          .then((res) => res.json())
          .then((data) => {
-            if (data.acknowledged) {
-            }
             setReviews(data);
             console.log(data);
          });

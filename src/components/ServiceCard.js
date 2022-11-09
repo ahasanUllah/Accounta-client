@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const ServiceCard = ({ service }) => {
@@ -30,7 +30,7 @@ const ServiceCard = ({ service }) => {
                   type="button"
                   className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-teal-600 text-gray-50"
                >
-                  Read more
+                  View Details
                </button>
             </div>
          </div>
