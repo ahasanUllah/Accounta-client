@@ -5,6 +5,7 @@ import Service from '../components/Service';
 import ServiceDetails from '../components/ServiceDetails';
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
+import PrivateRoute from '../context/PrivateRoute';
 
 import Main from '../layout/Main';
 
@@ -25,7 +26,11 @@ export const router = createBrowserRouter([
          },
          {
             path: '/addservice',
-            element: <AddService></AddService>,
+            element: (
+               <PrivateRoute>
+                  <AddService></AddService>
+               </PrivateRoute>
+            ),
          },
          {
             path: '/service/:id',
