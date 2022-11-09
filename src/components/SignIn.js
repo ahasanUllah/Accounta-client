@@ -4,7 +4,7 @@ import { AuthContext } from '../context/AuthProvider';
 import { toast } from 'react-toastify';
 
 const SignIn = () => {
-   const { login } = useContext(AuthContext);
+   const { login, googleLogin } = useContext(AuthContext);
    const location = useLocation();
    const navigate = useNavigate();
 
@@ -28,6 +28,17 @@ const SignIn = () => {
          });
    };
 
+   const handleGoogleLogin = () => {
+      googleLogin()
+         .then((result) => {
+            const user = result.login;
+            navigate(from, { replace: true });
+            toast.success('Sign in successfull');
+         })
+         .catch((error) => {
+            toast.warning(error.message);
+         });
+   };
    return (
       <div>
          <div className="">
@@ -41,6 +52,7 @@ const SignIn = () => {
                </p>
                <div className="my-6 space-y-4">
                   <button
+                     onClick={handleGoogleLogin}
                      aria-label="Login with Google"
                      type="button"
                      className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-600 focus:ring-teal-600"
