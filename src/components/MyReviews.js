@@ -2,13 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthProvider';
 
 import moment from 'moment';
-import { useLoaderData, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useTitle from '../hooks/useTtle';
 
 const MyReviews = () => {
    const { user } = useContext(AuthContext);
    const [myReviews, setMyReviews] = useState([]);
-   console.log(myReviews);
+   useTitle('My Reviews');
 
    useEffect(() => {
       fetch(`http://localhost:5000/reviews/?email=${user.email}`)

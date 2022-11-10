@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import hero from '../assets/hero.jpg';
+import useTitle from '../hooks/useTtle';
 import ServiceCard from './ServiceCard';
 
 const Home = () => {
    const services = useLoaderData();
+   useTitle('Home');
    return (
       <div className="mb-24 space-y-24">
          <section>

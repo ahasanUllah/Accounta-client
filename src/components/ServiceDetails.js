@@ -4,12 +4,14 @@ import UserReview from './UserReview';
 import UsreReviewForm from './UsreReviewForm';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import useTitle from '../hooks/useTtle';
 
 const ServiceDetails = () => {
    const service = useLoaderData();
    const [reviews, setReviews] = useState([]);
    const { name, image, description, _id } = service;
    console.log(service);
+   useTitle('Service Details');
 
    useEffect(() => {
       fetch(`http://localhost:5000/reviews/${_id}`)

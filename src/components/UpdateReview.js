@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useTitle from '../hooks/useTtle';
 
 const UpdateReview = () => {
    const previeousReview = useLoaderData();
    const [review, setReview] = useState(previeousReview);
+   useTitle('Update Review');
 
    const handleChange = (event) => {
       event.preventDefault();

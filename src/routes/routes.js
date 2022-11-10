@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import AddService from '../components/AddService';
+import Blog from '../components/Blog';
 import Home from '../components/Home';
 import MyReviews from '../components/MyReviews';
 import Service from '../components/Service';
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
             path: '/updatereview/:id',
             element: <UpdateReview></UpdateReview>,
             loader: ({ params }) => fetch(`http://localhost:5000/review/${params.id}`),
+         },
+         {
+            path: '/blog',
+            element: <Blog></Blog>,
          },
       ],
    },
