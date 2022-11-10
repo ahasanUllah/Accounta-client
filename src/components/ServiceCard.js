@@ -6,7 +6,7 @@ const ServiceCard = ({ service }) => {
    const navigate = useNavigate();
 
    const handleDetails = () => {
-      fetch(`http://localhost:5000/services/${service._id}`)
+      fetch(`https://accounta-assignment-server.vercel.app/services/${service._id}`)
          .then((res) => res.json())
          .then((data) => console.log(data));
 

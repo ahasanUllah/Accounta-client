@@ -13,7 +13,7 @@ const UpdateReview = () => {
       const feedback = event.target.feedback.value;
       review.feedback = feedback;
       setReview(review);
-      fetch(`http://localhost:5000/review/${previeousReview._id}`, {
+      fetch(`https://accounta-assignment-server.vercel.app/review/${previeousReview._id}`, {
          method: 'PUT',
          headers: {
             'content-type': 'application/json',
@@ -42,7 +42,7 @@ const UpdateReview = () => {
                         defaultValue={previeousReview.feedback}
                      ></textarea>
                      <button type="submit" className="py-4 my-8 font-semibold rounded-md text-gray-50 bg-teal-600">
-                        Edit feedback
+                        Edit Review
                      </button>
                   </form>
                </div>

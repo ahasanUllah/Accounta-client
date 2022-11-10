@@ -17,7 +17,7 @@ const UsreReviewForm = ({ service, reviews, setReviews }) => {
          feedback,
          date: new Date(),
       };
-      fetch(`http://localhost:5000/reviews`, {
+      fetch(`https://accounta-assignment-server.vercel.app/reviews`, {
          method: 'POST',
          headers: {
             'content-type': 'application/json',
@@ -27,7 +27,7 @@ const UsreReviewForm = ({ service, reviews, setReviews }) => {
          .then((res) => res.json())
          .then((data) => {
             if (data.acknowledged) {
-               fetch(`http://localhost:5000/reviews/${service._id}`)
+               fetch(`https://accounta-assignment-server.vercel.app/reviews/${service._id}`)
                   .then((res) => res.json())
                   .then((data) => {
                      setReviews(data);

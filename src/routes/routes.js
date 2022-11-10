@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
          {
             path: '/',
             element: <Home></Home>,
-            loader: () => fetch(`http://localhost:5000/servicehome`),
+            loader: () => fetch(`https://accounta-assignment-server.vercel.app/servicehome`),
          },
          {
             path: '/service',
@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
          {
             path: '/service/:id',
             element: <ServiceDetails> </ServiceDetails>,
-            loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`),
+            loader: ({ params }) => fetch(`https://accounta-assignment-server.vercel.app/services/${params.id}`),
          },
          {
             path: '/signup',
@@ -54,12 +54,12 @@ export const router = createBrowserRouter([
                   <MyReviews></MyReviews>
                </PrivateRoute>
             ),
-            loader: () => fetch('http://localhost:5000/services'),
+            loader: () => fetch('https://accounta-assignment-server.vercel.app/services'),
          },
          {
             path: '/updatereview/:id',
             element: <UpdateReview></UpdateReview>,
-            loader: ({ params }) => fetch(`http://localhost:5000/review/${params.id}`),
+            loader: ({ params }) => fetch(`https://accounta-assignment-server.vercel.app/review/${params.id}`),
          },
          {
             path: '/blog',

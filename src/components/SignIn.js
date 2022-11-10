@@ -26,7 +26,7 @@ const SignIn = () => {
                email: user.email,
             };
             //Jwt Token
-            fetch('http://localhost:5000/jwt', {
+            fetch('https://accounta-assignment-server.vercel.app/jwt', {
                method: 'POST',
                headers: {
                   'content-type': 'application/json',

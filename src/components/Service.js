@@ -8,7 +8,7 @@ const Service = () => {
    const [spinner, setSpinner] = useState(true);
    useEffect(() => {
       setSpinner(true);
-      fetch(`http://localhost:5000/services`)
+      fetch(`https://accounta-assignment-server.vercel.app/services`)
          .then((res) => res.json())
          .then((data) => {
             setServices(data);

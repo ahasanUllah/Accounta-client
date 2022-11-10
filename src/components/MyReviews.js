@@ -12,7 +12,7 @@ const MyReviews = () => {
    useTitle('My Reviews');
 
    useEffect(() => {
-      fetch(`http://localhost:5000/reviews/?email=${user.email}`, {
+      fetch(`https://accounta-assignment-server.vercel.app/reviews/?email=${user.email}`, {
          headers: {
             authorization: `Bearer ${localStorage.getItem('accounta-token')}`,
          },
@@ -30,7 +30,7 @@ const MyReviews = () => {
    }, [user?.email, logout]);
 
    const handleDelete = (id) => {
-      fetch(`http://localhost:5000/reviews/${id}`, {
+      fetch(`https://accounta-assignment-server.vercel.app/reviews/${id}`, {
          method: 'DELETE',
       })
          .then((res) => res.json())
@@ -75,7 +75,7 @@ const MyReviews = () => {
                         </thead>
                         <tbody>
                            {myReviews.map((review) => (
-                              <tr className="border-b border-opacity-20 border-gray-300 bg-gray-50">
+                              <tr key={review._id} className="border-b border-opacity-20 border-gray-300 bg-gray-50">
                                  <td className="p-3">
                                     <p>{moment.utc(review.date).local().startOf('seconds').fromNow()}</p>
                                  </td>
