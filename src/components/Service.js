@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLoaderData } from 'react-router-dom';
+
 import useTitle from '../hooks/useTtle';
 import ServiceCard from './ServiceCard';
 
