@@ -1,4 +1,6 @@
 import React from 'react';
+import { FaRegMoneyBillAlt } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const AddService = () => {
    const handleSubmit = (event) => {
@@ -24,7 +26,10 @@ const AddService = () => {
          body: JSON.stringify(addserviceInfo),
       })
          .then((res) => res.json())
-         .then((data) => console.log(data));
+         .then((data) => {
+            toast.success('Service added');
+            form.reset();
+         });
    };
    return (
       <div>

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import UserReview from './UserReview';
 import UsreReviewForm from './UsreReviewForm';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const ServiceDetails = () => {
    const service = useLoaderData();
@@ -40,7 +42,11 @@ const ServiceDetails = () => {
 
                <div class="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
                   <div class="relative h-64 overflow-hidden sm:h-80 lg:h-full">
-                     <img alt="Party" src={image} class="absolute inset-0 h-full w-full object-cover" />
+                     <PhotoProvider>
+                        <PhotoView src={image}>
+                           <img alt="Party" src={image} class="absolute inset-0 h-full w-full object-cover" />
+                        </PhotoView>
+                     </PhotoProvider>
                   </div>
 
                   <div class="lg:py-16">

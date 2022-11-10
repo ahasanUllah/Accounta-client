@@ -3,6 +3,7 @@ import { AuthContext } from '../context/AuthProvider';
 
 import moment from 'moment';
 import { useLoaderData, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const MyReviews = () => {
    const { user } = useContext(AuthContext);
@@ -29,6 +30,7 @@ const MyReviews = () => {
             if (data.deletedCount > 0) {
                const remaining = myReviews.filter((reviews) => reviews._id !== id);
                setMyReviews(remaining);
+               toast.success('Delete successfull');
             }
          });
    };

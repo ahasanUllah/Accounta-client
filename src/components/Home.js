@@ -6,7 +6,7 @@ import ServiceCard from './ServiceCard';
 const Home = () => {
    const services = useLoaderData();
    return (
-      <div className="mb-24">
+      <div className="mb-24 space-y-24">
          <section>
             <div className="bg-teal-600">
                <div className="container flex flex-col items-center px-4 py-16 pb-24 mx-auto text-center lg:pb-56 md:py-32 md:px-10 lg:px-32 text-gray-900">
@@ -35,14 +35,14 @@ const Home = () => {
             </div>
             <img src={hero} alt="" className="w-5/6 mx-auto mb-12 -mt-20 rounded-lg shadow-md lg:-mt-40 bg-gray-500" />
          </section>
-         <div className="grid grid-cols-3 gap-4 container  px-4  pb-12 mx-auto text-center  md:px-10 lg:px-32 text-gray-900">
+         <div className="grid grid-cols-3 gap-4 container  px-4   mx-auto text-center  md:px-10 lg:px-32 text-gray-900">
             {services.map((service) => (
                <ServiceCard key={service._id} service={service}></ServiceCard>
             ))}
          </div>
          <div className="text-center">
             <Link to="/service" className=" ">
-               <button type="button" className="px-8 py-3 font-semibold rounded bg-teal-600 text-gray-100">
+               <button type="button" className="px-12 py-3 font-semibold rounded bg-teal-600 text-gray-100">
                   All services
                </button>
             </Link>
@@ -56,8 +56,7 @@ const Home = () => {
                         <div class="relative h-64 sm:h-80 lg:h-full">
                            <img
                               alt="House"
-                              src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                              class="absolute inset-0 h-full w-full object-cover"
+                              src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                            />
                         </div>
                      </div>
@@ -67,18 +66,17 @@ const Home = () => {
 
                         <div class="p-8 sm:p-16 lg:p-24">
                            <h2 class="text-2xl font-bold sm:text-3xl">
-                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, debitis.
+                              Provides Perfect Solution For All Accounting Services.
                            </h2>
 
                            <p class="mt-4 text-gray-600">
-                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, molestiae! Quidem est
-                              esse numquam odio deleniti, beatae, magni dolores provident quaerat totam eos, aperiam
-                              architecto eius quis quibusdam fugiat dicta.
+                              Accounting for start-ups or small business organisations can be a cumbersome process. Most
+                              of us do not understand the technical jargons the accountants speak.
                            </p>
 
                            <a
                               href="/"
-                              class="mt-8 inline-block rounded border border-indigo-600 bg-indigo-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                              class="mt-8 inline-block rounded border border-teal-600 bg-teal-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-teal-600 focus:outline-none focus:ring active:text-teal-500"
                            >
                               Get in Touch
                            </a>
@@ -88,6 +86,35 @@ const Home = () => {
                </div>
             </section>
          </div>
+         <h2 className="text-4xl text-center font-bold mb-10">Why choose us</h2>
+         <section className="p-6 bg-gray-100 text-gray-800">
+            <div className="container mx-auto grid justify-center grid-cols-2 text-center lg:grid-cols-3">
+               <div className="flex flex-col justify-start m-2 lg:m-6">
+                  <p className="text-4xl font-bold leading-none lg:text-6xl">50+</p>
+                  <p className="text-sm sm:text-base">Clients</p>
+               </div>
+               <div className="flex flex-col justify-start m-2 lg:m-6">
+                  <p className="text-4xl font-bold leading-none lg:text-6xl">89K</p>
+                  <p className="text-sm sm:text-base">Followers on social media</p>
+               </div>
+               <div className="flex flex-col justify-start m-2 lg:m-6">
+                  <p className="text-4xl font-bold leading-none lg:text-6xl">3</p>
+                  <p className="text-sm sm:text-base">Published books</p>
+               </div>
+               <div className="flex flex-col justify-start m-2 lg:m-6">
+                  <p className="text-4xl font-bold leading-none lg:text-6xl">8</p>
+                  <p className="text-sm sm:text-base">TED talks</p>
+               </div>
+               <div className="flex flex-col justify-start m-2 lg:m-6">
+                  <p className="text-4xl font-bold leading-none lg:text-6xl">22</p>
+                  <p className="text-sm sm:text-base">Years of experience</p>
+               </div>
+               <div className="flex flex-col justify-start m-2 lg:m-6">
+                  <p className="text-4xl font-bold leading-none lg:text-6xl">10+</p>
+                  <p className="text-sm sm:text-base">Sevices</p>
+               </div>
+            </div>
+         </section>
       </div>
    );
 };

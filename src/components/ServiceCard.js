@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const ServiceCard = ({ service }) => {
    const navigate = useNavigate();
@@ -19,6 +20,7 @@ const ServiceCard = ({ service }) => {
                alt=""
                className="object-cover object-center w-full rounded-t-md h-72 bg-gray-500"
             />
+
             <div className="flex flex-col justify-between p-6 space-y-8">
                <div className="space-y-2">
                   <h2 className="text-xl font-semibold tracking-wide">{service.name}</h2>
