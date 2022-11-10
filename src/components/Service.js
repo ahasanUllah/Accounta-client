@@ -38,7 +38,7 @@ const Service = () => {
                   </p>
                </div>
 
-               <div className="grid grid-cols-4 gap-8 container  px-4 py-16 pb-24 mx-auto text-center lg:pb-56 md:py-32 md:px-10 lg:px-32 text-gray-900">
+               <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 container  px-4 py-16 pb-24 mx-auto text-center lg:pb-56 md:py-32 md:px-10 lg:px-32 text-gray-900">
                   {services.map((service) => (
                      <ServiceCard key={service._id} service={service}></ServiceCard>
                   ))}
