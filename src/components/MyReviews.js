@@ -5,29 +5,56 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useTitle from '../hooks/useTtle';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 
 const MyReviews = () => {
    const { user, logout } = useContext(AuthContext);
-   const [myReviews, setMyReviews] = useState([]);
+   // const [myReviews, setMyReviews] = useState([]);
    useTitle('My Reviews');
 
-   useEffect(() => {
-      fetch(`https://accounta-assignment-server.vercel.app/reviews/?email=${user.email}`, {
+   const {
+      data: myReviews,
+      isError,
+      isLoading,
+      refetch,
+   } = useQuery(['myReviews'], () => {
+      return axios(`https://accounta-assignment-server.vercel.app/reviews/?email=${user.email}`, {
          headers: {
-            authorization: `Bearer ${localStorage.getItem('accounta-token')}`,
+            authorization: `bearer ${localStorage.getItem('accounta-token')}`,
          },
-      })
-         .then((res) => {
-            if (res.status === 401 || res.status === 403) {
-               logout();
-            }
-            return res.json();
-         })
-         .then((data) => {
-            setMyReviews(data);
-            console.log(data);
-         });
-   }, [user?.email, logout]);
+      }).then((data) => data.data);
+   });
+
+   if (isLoading) {
+      return <div>Loading... </div>;
+   }
+   if (isError) {
+      return (
+         <div>
+            <h2>Cannot Fetch data</h2>
+         </div>
+      );
+   }
+   console.log(myReviews);
+
+   // useEffect(() => {
+   //    fetch(`https://accounta-assignment-server.vercel.app/reviews/?email=${user.email}`, {
+   //       headers: {
+   //          authorization: `Bearer ${localStorage.getItem('accounta-token')}`,
+   //       },
+   //    })
+   //       .then((res) => {
+   //          if (res.status === 401 || res.status === 403) {
+   //             logout();
+   //          }
+   //          return res.json();
+   //       })
+   //       .then((data) => {
+   //          setMyReviews(data);
+   //          console.log(data);
+   //       });
+   // }, [user?.email, logout]);
 
    const handleDelete = (id) => {
       fetch(`https://accounta-assignment-server.vercel.app/reviews/${id}`, {
@@ -38,7 +65,8 @@ const MyReviews = () => {
             console.log(data);
             if (data.deletedCount > 0) {
                const remaining = myReviews.filter((reviews) => reviews._id !== id);
-               setMyReviews(remaining);
+               // setMyReviews(remaining);
+               refetch();
                toast.success('Delete successfull');
             }
          });

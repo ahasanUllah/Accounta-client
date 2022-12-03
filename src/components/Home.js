@@ -35,7 +35,7 @@ const Home = () => {
                   </div>
                </div>
             </div>
-            <img src={hero} alt="" className="w-5/6 mx-auto mb-12 -mt-20 rounded-lg shadow-md lg:-mt-40 bg-gray-500" />
+            <img src={hero} alt="" className="w-5/6  mx-auto mb-12 -mt-20 rounded-lg shadow-md lg:-mt-40 bg-gray-500" />
          </section>
          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 container  px-4   mx-auto text-center  md:px-10 lg:px-32 text-gray-900">
             {services.map((service) => (
